@@ -1,1 +1,41 @@
-<p>formulario2 works!</p>
+<div class="card">
+    <div class="card-body">
+        <form (ngSubmit)="procesar()" #formContact="ngForm">
+            <div class="mb-2">
+                <label class="form-label">
+                    Nombre:
+                </label>
+
+                <input type="text" name="nombre" class="form-control" placeholder="Por favor ingrese un nombre" [(ngModel)]="persona.nombre" required #name="ngModel">
+            </div>
+
+            <div class="alert alert-danger mt-2" [hidden]="name.valid || name.pristine"> <!--El valor de [hidden] indica que se debe ocultar simepre que -->
+                    El Nombre es obligatorio                                 <!--Se cumplan todas las reglas de validacion O no se haya escribo no se haya escrito nada-->
+            </div>
+
+            <div>
+                <label class="form-label">
+                    Edad:
+                </label>
+
+                <input type="number" name="edad" class="form-control" placeholder="Por favor ingrese una edad" [(ngModel)]="persona.edad" required #edad="ngModel">
+            </div>
+
+            <div class="alert alert-danger mt-2" [hidden]="edad.valid || edad.pristine"> <!--El valor de [hidden] indica que se debe ocultar simepre que -->
+                La Edad es obligatorio                                 <!--Se cumplan todas las reglas de validacion O no se haya escribo no se haya escrito nada-->
+            </div>
+
+            <button class="btn btn-primary mt-4" [disabled]="formContact.invalid">
+                Enviar
+            </button>
+        </form>
+    </div>
+</div>
+
+{{ name.errors | json }} <!-- Muestra las reglas de validacion que NO se estan cumpliendo -->
+                        <!-- Si muestra 'null' significa que no hay errores de validacion, es decir, todas las validaciones se cumplen-->
+<hr>
+{{ name.valid }} <!-- Muestra si las reglas de validacion se cumplen -->
+<!--{{ persona | json }}-->
+<hr>
+{{ formContact.valid }}
