@@ -1,7 +1,8 @@
 <div class="container">
-    <h1>{{ title }}</h1>
+    <h2>Componente Padre</h2>
 
-    <input type="text" class="form-control" [(ngModel)]="title">
+    <input type="text" class="form-control mb-4" [(ngModel)]="title">
 
-    <app-children title2="{{ title }}"></app-children>
+    <app-children title2="{{ title }}" (titleChange)="title = $event"></app-children>
+    <!--<app-children [title2]="title"></app-children> ES LO MISMO QUE LO ANTERIOR-->
 </div>

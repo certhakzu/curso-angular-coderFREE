@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-children',
@@ -8,5 +8,11 @@ import { Component, Input } from '@angular/core';
 export class ChildrenComponent {
 
   @Input() title2?: string; // el ? indica que es un parámetro opional
-  
+
+  @Output() titleChange = new EventEmitter<string>();
+
+  emitTitleChange(){
+    //console.log('El title ha cambiado por: ' + this.title2);
+    this.titleChange.emit(this.title2);
+  }
 }
